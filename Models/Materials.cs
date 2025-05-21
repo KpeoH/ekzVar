@@ -1,0 +1,9 @@
+﻿namespace ekzVar.Models
+{
+    public class Materials
+    {
+        public int Id { get; set; }
+        public required string Name { get; set; }
+        public float Price { get; set; }
+    }
+}

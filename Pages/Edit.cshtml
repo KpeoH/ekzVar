@@ -1,0 +1,52 @@
+﻿@page
+@model ekzVar.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Редактирование обоев";
+}
+
+<h1>Редактирование обоев</h1>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Oboi.Id" />
+            <div class="form-group">
+                
+                <label asp-for="Oboi.Name" class="control-label">Название</label>
+                <input asp-for="Oboi.Name" class="form-control" />
+                <span asp-validation-for="Oboi.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Oboi.OsnovaMaterialId" class="control-label">Материал основы</label>
+                <select asp-for="Oboi.OsnovaMaterialId" class="form-control" asp-items="ViewBag.OsnovaMaterialId"></select>
+                <span asp-validation-for="Oboi.OsnovaMaterialId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Oboi.PokritieMaterialId" class="control-label">Материал покрытия</label>
+                <select asp-for="Oboi.PokritieMaterialId" class="form-control" asp-items="ViewBag.PokritieMaterialId"></select>
+                <span asp-validation-for="Oboi.PokritieMaterialId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary" asp-page="./Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

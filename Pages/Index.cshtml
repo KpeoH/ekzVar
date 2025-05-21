@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Обои";
+}
+
+<h2>Обои</h2>
+<a class="btn btn-primary" asp-page="CreateOboi">Добавить обои</a>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @Html.Raw(TempData["SuccessMessage"])
+    </div>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Основа</th>
+            <th>Покрытие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Oboi!)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.OsnovaMaterial?.Name</td>
+                <td>@p.PokritieMaterial?.Name</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@p.Id">Изменить</a> |
+                    <a asp-page="CalculateCost" asp-route-id="@p.Id">Затраты на производство</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

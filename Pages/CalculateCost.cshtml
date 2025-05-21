@@ -1,0 +1,14 @@
+﻿@page "{id:int}"
+@model CalculateCostModel
+@{
+    ViewData["Title"] = "Расчёт затрат на производство";
+}
+
+<h1>Расчёт затрат на производство обоев марки "@Model.Oboi.Name"</h1>
+
+<p><b>Материал основы:</b> @Model.Oboi.OsnovaMaterial!.Name (<em>цена: @Model.Oboi.OsnovaMaterial!.Price руб.</em>)</p>
+<p><b>Материал покрытия:</b> @Model.Oboi.PokritieMaterial!.Name (<em>цена: @Model.Oboi.PokritieMaterial!.Price руб.</em>)</p>
+
+<p><b>Итоговая стоимость производства:</b> <strong>@Model.TotalCost руб.</strong></p>
+
+<a class="btn btn-secondary" href="/Index">Назад к списку обоев</a>
